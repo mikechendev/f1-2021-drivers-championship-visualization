@@ -4,6 +4,7 @@ Data visualization of the 2022 Formula 1 season
 Background
 
 A Javascript application to visualize the current Formula 1 season using data provided by Erghast Developer API.
+Users will be able to view an animated recreation of this season's races on a chart.
 
 Functionality & MVPs
 
@@ -20,10 +21,10 @@ Wire Frames
 
 Technologies, Libraries, APIs
 
--Erghast Developer API for the data
--Chart.js or D3.js to animate the bar chart
--Webpack and Babel to bundle and transpile the source JavaScript code
--npm to manage project dependences
+-Erghast Developer API for the data.
+-Chart.js or D3.js to animate the bar chart.
+-Webpack and Babel to bundle and transpile the source JavaScript code.
+-npm to manage project dependences.
 
 Imprementation Timeline
 
