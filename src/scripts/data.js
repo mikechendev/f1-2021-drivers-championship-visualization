@@ -1,4 +1,21 @@
-//get data for: race results, laps, pitstops, drivers
+export default function perRaceData (apiParam) {
+  let i = 1;
+  let result = [];
+  while (i < 8) {
+    let url = `https://ergast.com/api/f1/current/${i}/${apiParam}.json`;
+    d3.json(url, data => {
+      result.push(data['MRData']);
+    })
+    i++;
+  }
+  return result;
+}
+
+export const raceResults = perRaceData('results');
+export const drivers = perRaceData('drivers');
+export const driverStandings = perRaceData('driverStandings');
+export const constructorStandings = perRaceData('constructorStandings');
+
 
 // const cacheTime = 1000000;
 // const cache = {};
@@ -28,31 +45,29 @@
 //fetch race results for season
 // const raceResultsURL = 'https://ergast.com/api/f1/current/results.json?limit=30&offset=120';
 
-async function fetchData (url) {
-  const response = await fetch(url);
-  return await response.json();
-}
+// async function fetchData (url) {
+//   const response = await fetch(url);
+//   return await response.json();
+// }
 
-export default function perRaceData (apiParam) {
-  let i = 1;
-  let result = [];
-  while (i < 8) {
-    let url = `https://ergast.com/api/f1/current/${i}/${apiParam}.json`;
-    let fetched = fetchData(url);
-    result.push(fetched)
-    i++;
-  }
-  return result;
-}
+// export default function perRaceData (apiParam) {
+//   let i = 1;
+//   let result = [];
+//   while (i < 8) {
+//     let url = `https://ergast.com/api/f1/current/${i}/${apiParam}.json`;
+//     let fetched = fetchData(url);
+//     result.push(fetched)
+//     i++;
+//   }
+//   return result;
+// }
 
-export const raceResults = perRaceData('results');
-export const drivers = perRaceData('drivers');
-export const driverStandings = perRaceData('driverStandings');
-export const constructorStandings = perRaceData('constructorStandings');
 
-export const round1 = () => {
-  raceResults[0].then(val => {
-    console.log(val['MRData']['RaceTable']['Races']['0']);
-  })
-}
+// export const round1 = () => {
+//   raceResults[0].then(val => {
+//     d3.json(val, data => {
+//       console.log(data);
+//     });
+//   })
+// }
 
