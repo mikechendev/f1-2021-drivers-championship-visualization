@@ -1,3 +1,4 @@
+import perRaceData from './scripts/data';
 
 document.addEventListener("DOMContentLoaded", function() {
   const canvas = document.querySelector('canvas');
