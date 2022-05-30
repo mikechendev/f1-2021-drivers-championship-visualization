@@ -45,5 +45,14 @@ export default function perRaceData (apiParam) {
   return result;
 }
 
+export const raceResults = perRaceData('results');
+export const drivers = perRaceData('drivers');
+export const driverStandings = perRaceData('driverStandings');
+export const constructorStandings = perRaceData('constructorStandings');
 
+export const round1 = () => {
+  raceResults[0].then(val => {
+    console.log(val['MRData']['RaceTable']['Races']['0']);
+  })
+}
 
