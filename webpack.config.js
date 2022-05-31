@@ -6,17 +6,26 @@ const MiniCssExtractPlugin = require('mini-css-extract-plugin');
 const config = {
   entry: [
     path.resolve(__dirname, 'src', 'index.js'),
-    path.resolve(__dirname, 'src', 'index.scss')
+    path.resolve(__dirname, 'src', 'index.scss'),
   ],
   output: {
     path: path.join(__dirname, 'dist'), // bundled file in dist/
-    filename: '[name].js'
+    filename: '[name].js',
   },
   module: {
     rules: [
       {
         test: /\.js$/, // applies to js files
-        use: ['babel-loader'], // transpiles your js
+        use: [
+          'babel-loader',
+          {
+            loader: 'babel-loader',
+            options: {
+              plugins: ['@babel/plugin-syntax-top-level-await'],
+            },
+          },
+        ], // transpiles your js
+
         exclude: /node_modules/, // don't transpile node modules
       },
       {
@@ -25,29 +34,30 @@ const config = {
           MiniCssExtractPlugin.loader, // create bundled css file
           {
             loader: 'css-loader', // resolves @import statements
-            options: { url: false } // don't resolve url() statements
+            options: { url: false }, // don't resolve url() statements
           },
           'sass-loader', // compiles sass to css
-        ]
-      }
-    ]
+        ],
+      },
+    ],
   },
-//   resolve: {
-//   fallback: {
-//     "fs": false,
-//     "tls": false,
-//     "net": false,
-//     "path": false,
-//     "zlib": false,
-//     "http": false,
-//     "https": false,
-//     "stream": false,
-//     "string_decoder": false,
-//     "url": false,
-//     "util": false
-//   } 
-// },
-  plugins: [new MiniCssExtractPlugin()]
+  //   resolve: {
+  //   fallback: {
+  //     "fs": false,
+  //     "tls": false,
+  //     "net": false,
+  //     "path": false,
+  //     "zlib": false,
+  //     "http": false,
+  //     "https": false,
+  //     "stream": false,
+  //     "string_decoder": false,
+  //     "url": false,
+  //     "util": false
+  //   }
+  // },
+  plugins: [new MiniCssExtractPlugin()],
+  experiments: { topLevelAwait: true },
 };
 
 module.exports = (env, argv) => {
@@ -58,4 +68,4 @@ module.exports = (env, argv) => {
   }
 
   return config;
-}
+};
