@@ -1,5 +1,50 @@
 import Driver from './driver';
 
+export async function fetchData(round) {
+  const url = `https://ergast.com/api/f1/2021/${round}/driverstandings.json`;
+  const response = await fetch(url);
+  const data = await response.json();
+  return data.MRData.StandingsTable.StandingsLists[0].DriverStandings;
+  // return data;
+  // console.log(data);
+}
+
+export async function fetchAllRaces() {
+  const promises = [];
+  let round = 1;
+  while (round < 23) {
+    const data = fetchData(round);
+    promises.push(data);
+    round++;
+  }
+  const results = await Promise.all(promises);
+  return results;
+}
+
+const races = await fetchAllRaces();
+
+export const createDrivers = () => {
+  let drivers = [];
+  for (let i = 0; i < races.length; i++) {
+    let race = races[i];
+    for (let j = 0; j < race.length; j++) {
+      let driver = races[i][j];
+      if (drivers.some((racer) => racer.name === driver.Driver.familyName)) {
+        let k = drivers.findIndex(
+          (racer) => racer.name === driver.Driver.familyName
+        );
+        drivers[k].rounds.push(i + 1);
+        drivers[k].points.push(driver.points);
+      } else {
+        let newDriver = new Driver(driver.Driver.familyName);
+        newDriver.rounds.push(i + 1);
+        newDriver.points.push(driver.points);
+        drivers.push(newDriver);
+      }
+    }
+  }
+  return drivers;
+};
 // export default function perRaceData (apiParam) {
 //   let i = 1;
 //   let result = [];
@@ -35,40 +80,28 @@ import Driver from './driver';
 //   // return res;
 // }
 
-export async function fetchData(round, apiParam, lap = null) {
-  const url = `https://ergast.com/api/f1/current/${round}/${apiParam}${
-    lap !== null ? `/${lap}` : ''
-  }.json`;
-  const response = await fetch(url);
-  const data = await response.json();
-  return data;
-  // console.log(data);
-  // return data.MRData.StandingsTable.StandingsLists[0].DriverStandings;
-}
+// export async function fetchData(round, apiParam, lap = null) {
+//   const url = `https://ergast.com/api/f1/current/${round}/${apiParam}${
+//     lap !== null ? `/${lap}` : ''
+//   }.json`;
+//   const response = await fetch(url);
+//   const data = await response.json();
+//   return data;
+//   // console.log(data);
+//   // return data.MRData.StandingsTable.StandingsLists[0].DriverStandings;
+// }
 
-export async function fetchAllRaces() {
-  const promises = [];
-  let round = 1;
-  while (round < 8) {
-    const data = fetchLaps(round);
-    promises.push(data);
-    round++;
-  }
-  const results = await Promise.all(promises);
-  return results;
-}
-
-async function fetchLaps(round) {
-  const promises = [];
-  let lap = 1;
-  while (fetchData(round, 'laps', lap).MRData.total !== 0) {
-    const data = fetchData(round, 'laps', lap);
-    promises.push(data);
-    lap++;
-  }
-  const results = await Promise.all(promises);
-  return results;
-}
+// async function fetchLaps(round) {
+//   const promises = [];
+//   let lap = 1;
+//   while (fetchData(round, 'laps', lap).MRData.total !== 0) {
+//     const data = fetchData(round, 'laps', lap);
+//     promises.push(data);
+//     lap++;
+//   }
+//   const results = await Promise.all(promises);
+//   return results;
+// }
 
 // export default function perRaceData () {
 //   let apiParam = 'driverStandings';

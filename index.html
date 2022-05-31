@@ -31,8 +31,8 @@
         data: {
           labels: ['Leclerc', 'Verstappen', 'Sainz', 'Hamilton', 'Magnussen', 'Perez', 'Russell', 'Gasly', 'Alonso', 'Ocon', 'Albon', 'Tsuonoda', 'Schumacher', 'Bottas', 'Hulkenberg', 'Norris', 'Stroll', 'Latifi', 'Zhou', 'Ricciardo'],
           datasets: [{
-            label: '# of Votes',
-            data: [12, 19, 3, 5, 2, 3],
+            label: '# of Points',
+            data: [0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0],
             backgroundColor: [
               'rgb(237,28,36)',
               'rgb(30,91,198)',
@@ -92,7 +92,57 @@
         myChart.config.data.datasets[0].backgroundColor = backgroundColor;
         myChart.config.data.datasets[0].borderColor = borderColor;
 
-        dataPoints[label.indexOf('')]
+        if (dataPoints[label.indexOf('Leclerc')] < 1000) {
+          dataPoints[label.indexOf('Leclerc')] += 100;
+        }
+        if (dataPoints[label.indexOf('Sainz')] < 975) {
+          dataPoints[label.indexOf('Sainz')] += 90;
+        }
+        if (dataPoints[label.indexOf('Hamilton')] < 950) {
+          dataPoints[label.indexOf('Hamilton')] += 88;
+        }
+        if (dataPoints[label.indexOf('Russell')] < 925) {
+          dataPoints[label.indexOf('Russell')] += 85;
+        }
+        if (dataPoints[label.indexOf('Magnussen')] < 900) {
+          dataPoints[label.indexOf('Magnussen')] += 70;
+        }
+        if (dataPoints[label.indexOf('Bottas')] < 875) {
+          dataPoints[label.indexOf('Bottas')] += 70;
+        }
+        if (dataPoints[label.indexOf('Ocon')] < 850) {
+          dataPoints[label.indexOf('Ocon')] += 70;
+        }
+        if (dataPoints[label.indexOf('Tsunoda')] < 825) {
+          dataPoints[label.indexOf('Tsunoda')] += 69;
+        }
+        if (dataPoints[label.indexOf('Alonso')] < 800) {
+          dataPoints[label.indexOf('Alonso')] += 69;
+        }
+        if (dataPoints[label.indexOf('Zhou')] < 775) {
+          dataPoints[label.indexOf('Zhou')] += 69;
+        }
+        if (dataPoints[label.indexOf('Schumacher')] < 750) {
+          dataPoints[label.indexOf('Schumacher')] += 65;
+        }
+        if (dataPoints[label.indexOf('Stroll')] < 725) {
+          dataPoints[label.indexOf('Stroll')] += 65;
+        }
+        if (dataPoints[label.indexOf('Albon')] < 700) {
+          dataPoints[label.indexOf('Albon')] += 65;
+        }
+        if (dataPoints[label.indexOf('Ricciardo')] < 675) {
+          dataPoints[label.indexOf('Ricciardo')] += 60;
+        }
+        if (dataPoints[label.indexOf('Norris')] < 650) {
+          dataPoints[label.indexOf('Norris')] += 60;
+        }
+        if (dataPoints[label.indexOf('Latifi')] < 625) {
+          dataPoints[label.indexOf('Latifi')] += 60;
+        }
+        if (dataPoints[label.indexOf('Hulkenberg')] < 600) {
+          dataPoints[label.indexOf('Hulkenberg')] += 60;
+        }
 
         myChart.update();
       }, 1000)

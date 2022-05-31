@@ -1,7 +1,7 @@
 export default class Driver {
-  constructor(driver, position, points) {
-    this.driver = driver;
-    this.position = position;
-    this.points = points;
+  constructor(name) {
+    this.rounds = [];
+    this.name = name;
+    this.points = [];
   }
 }
