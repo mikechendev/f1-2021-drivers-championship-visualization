@@ -1,7 +1,8 @@
 export default class Driver {
-  constructor(name) {
-    this.rounds = [];
+  constructor(name, team) {
     this.name = name;
+    this.team = team;
+    this.rounds = [];
     this.points = [];
   }
 }

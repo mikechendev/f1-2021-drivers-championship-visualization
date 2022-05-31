@@ -8,5 +8,6 @@ document.addEventListener('DOMContentLoaded', function () {
 });
 
 console.log(createDrivers());
+console.log(fetchAllRaces());
 // let data = await fetchAllRaces();
 // console.log(data);

@@ -29,16 +29,20 @@ export const createDrivers = () => {
     let race = races[i];
     for (let j = 0; j < race.length; j++) {
       let driver = races[i][j];
-      if (drivers.some((racer) => racer.name === driver.Driver.familyName)) {
-        let k = drivers.findIndex(
-          (racer) => racer.name === driver.Driver.familyName
-        );
+      let k = drivers.findIndex(
+        (racer) =>
+          racer.name ===
+          `${driver.Driver.givenName} ${driver.Driver.familyName}`
+      );
+      if (k > -1) {
         drivers[k].rounds.push(i + 1);
-        drivers[k].points.push(driver.points);
+        drivers[k].points.push(parseFloat(driver.points));
       } else {
-        let newDriver = new Driver(driver.Driver.familyName);
+        let name = `${driver.Driver.givenName} ${driver.Driver.familyName}`;
+        let team = driver.Constructors[0].name;
+        let newDriver = new Driver(name, team);
         newDriver.rounds.push(i + 1);
-        newDriver.points.push(driver.points);
+        newDriver.points.push(parseFloat(driver.points));
         drivers.push(newDriver);
       }
     }
