@@ -26,10 +26,7 @@ const raceData = {
   datasets: [
     {
       label: 'Points',
-      data: [
-        10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10,
-        10, 10, 10,
-      ],
+      data: [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
       backgroundColor: [
         'rgb(108,211,191)', //ham
         'rgb(30,91,198)', //ver
@@ -107,10 +104,10 @@ export function setAnimate(chart) {
         dataPoints[label.indexOf(`${driver.name}`)] <
         `${driver.points[driver.points.length - 1]}`
       ) {
-        dataPoints[label.indexOf(`${driver.name}`)] += 25;
+        dataPoints[label.indexOf(`${driver.name}`)] += 15;
       }
     });
 
     chart.update();
-  }, 2500);
+  }, 1500);
 }
