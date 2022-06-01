@@ -1,9 +1,9 @@
-# f1_2022
-Data visualization of the 2022 Formula 1 season
+# 2021 Formula 1 Driver's Championship Visualization
+Data visualization of the 2021 Formula 1 season
 
 # Background
 
-A Javascript application to visualize the current Formula 1 season using data provided by Erghast Developer API.
+A Javascript application to visualize the 2021 Formula 1 season using data provided by Erghast Developer API.
 Users will be able to view an animated recreation of this season's races on a chart.
 
 # Functionality & MVPs

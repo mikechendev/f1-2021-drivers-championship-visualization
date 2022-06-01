@@ -12,6 +12,15 @@ const labels = () => {
   return result;
 };
 
+// const updateIntervals = (driver) => {
+//   if (
+//     dataPoints[label.indexOf(`${driver.name}`)] <
+//     `${driver.points[driver.points.length - 1]}`
+//   ) {
+//     dataPoints[label.indexOf(`${driver.name}`)] += 25;
+//   }
+// };
+
 const raceData = {
   labels: labels(),
   datasets: [
@@ -62,13 +71,13 @@ export const config = {
 };
 
 export function setAnimate(chart) {
-  setInterval(function update(chart) {
+  setInterval(function update() {
     let merged = chart.config.data.labels.map((label, i) => {
       return {
         labels: chart.config.data.labels[i],
         dataPoints: chart.config.data.datasets[0].data[i],
         backgroundColor: chart.config.data.datasets[0].backgroundColor[i],
-        borderColor: chart.config.data.datasets[0].borderColor[i],
+        // borderColor: chart.config.data.datasets[0].borderColor[i],
       };
     });
     const label = [];
@@ -93,6 +102,15 @@ export function setAnimate(chart) {
 
     //Put update logic here
 
+    drivers().forEach((driver) => {
+      if (
+        dataPoints[label.indexOf(`${driver.name}`)] <
+        `${driver.points[driver.points.length - 1]}`
+      ) {
+        dataPoints[label.indexOf(`${driver.name}`)] += 25;
+      }
+    });
+
     chart.update();
-  }, 1000);
+  }, 2500);
 }
