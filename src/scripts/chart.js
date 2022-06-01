@@ -1,25 +1,16 @@
 import { createDrivers } from './data';
 
-const drivers = () => {
-  return createDrivers();
-};
+const drivers = createDrivers();
+
+console.log(drivers);
 
 const labels = () => {
   let result = [];
-  drivers().forEach((driver) => {
+  drivers.forEach((driver) => {
     result.push(driver.name);
   });
   return result;
 };
-
-// const updateIntervals = (driver) => {
-//   if (
-//     dataPoints[label.indexOf(`${driver.name}`)] <
-//     `${driver.points[driver.points.length - 1]}`
-//   ) {
-//     dataPoints[label.indexOf(`${driver.name}`)] += 25;
-//   }
-// };
 
 const raceData = {
   labels: labels(),
@@ -80,7 +71,7 @@ export function setAnimate(chart) {
     const label = [];
     const dataPoints = [];
     const backgroundColor = [];
-    const borderColor = [];
+    // const borderColor = [];
 
     const dataSort = merged.sort((b, a) => {
       return a.dataPoints - b.dataPoints;
@@ -90,24 +81,41 @@ export function setAnimate(chart) {
       label.push(dataSort[i].labels);
       dataPoints.push(dataSort[i].dataPoints);
       backgroundColor.push(dataSort[i].backgroundColor);
-      borderColor.push(dataSort[i].borderColor);
+      // borderColor.push(dataSort[i].borderColor);
     }
     chart.config.data.labels = label;
     chart.config.data.datasets[0].data = dataPoints;
     chart.config.data.datasets[0].backgroundColor = backgroundColor;
-    chart.config.data.datasets[0].borderColor = borderColor;
+    // chart.config.data.datasets[0].borderColor = borderColor;
 
     //Put update logic here
 
-    drivers().forEach((driver) => {
-      if (
-        dataPoints[label.indexOf(`${driver.name}`)] <
-        `${driver.points[driver.points.length - 1]}`
-      ) {
-        dataPoints[label.indexOf(`${driver.name}`)] += 15;
+    for (let n = 0; n < 23; n++) {
+      for (let j = 0; j < drivers.length; j++) {
+        if (
+          dataPoints[label.indexOf(`${drivers[j].name}`)] <
+          `${drivers[j].points[drivers[j].points.length - 1]}`
+        ) {
+          dataPoints[label.indexOf(`${drivers[j].name}`)] +=
+            n === 0
+              ? drivers[j].points[n]
+              : drivers[j].points[n] - drivers[j].points[n - 1];
+          // debugger;
+        }
       }
-    });
-
+    }
     chart.update();
-  }, 1500);
+  }, 2000);
 }
+
+// drivers.forEach((driver) => {
+//   let i = 0;
+//   if (
+//     dataPoints[label.indexOf(`${driver.name}`)] <
+//     `${driver.points[driver.points.length - 1]}`
+//   ) {
+//     dataPoints[label.indexOf(`${driver.name}`)] +=
+//       i === 0 ? driver.points[i] : driver.points[i] - driver.points[i - 1];
+//     i++;
+//   }
+// });
