@@ -74,6 +74,8 @@ export function setAnimate(chart) {
     chart.config.data.datasets[0].backgroundColor = backgroundColor;
     chart.config.data.datasets[0].borderColor = borderColor;
 
+    //Put update logic here
+
     chart.update();
   }, 1000);
 }
