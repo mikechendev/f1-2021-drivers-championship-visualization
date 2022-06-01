@@ -23,130 +23,131 @@
     </nav>
 
     <canvas id="myChart" width="400" height="400"></canvas>
-    <!-- <script>
-      const labels = ['Leclerc', 'Verstappen', 'Sainz', 'Hamilton', 'Magnussen', 'Perez', 'Russell', 'Gasly', 'Alonso', 'Ocon', 'Albon', 'Tsuonoda', 'Schumacher', 'Bottas', 'Hulkenberg', 'Norris', 'Stroll', 'Latifi', 'Zhou', 'Ricciardo'];
-      const ctx = document.getElementById('myChart').getContext('2d');
-      const myChart = new Chart(ctx, {
-        type: 'bar',
-        data: {
-          labels: labels,
-          datasets: [{
-            label: '# of Points',
-            data: [0,0,0,0,0,0,0,0,0,0,200,0,0,0,0,0,0,200,150,175],
-            backgroundColor: [
-              'rgb(237,28,36)',
-              'rgb(30,91,198)',
-              'rgb(237,28,36)',
-              'rgb(108,211,191)',
-              'rgba(75, 192, 192, 0.2)',
-              'rgb(30,91,198)',
-              'rgb(108,211,191)'
-            ],
-            borderColor: [
-              'rgba(255, 99, 132, 1)',
-              'rgba(54, 162, 235, 1)',
-              'rgba(255, 206, 86, 1)',
-              'rgba(75, 192, 192, 1)',
-              'rgba(153, 102, 255, 1)',
-              'rgba(255, 159, 64, 1)'
-            ],
-            borderWidth: 1
-          }]
-        },
-        options: {
-          indexAxis: 'y',
-          scales: {
-            x: {
-              beginAtZero: true
-            }
-          }
-        }
-      });
-
-      setInterval(function update () {
-        let merged = myChart.config.data.labels.map((label, i) => {
-          return {
-            'labels': myChart.config.data.labels[i],
-            'dataPoints': myChart.config.data.datasets[0].data[i],
-            'backgroundColor': myChart.config.data.datasets[0].backgroundColor[i],
-            'borderColor': myChart.config.data.datasets[0].borderColor[i]
-          }
-        })
-        const label = [];
-        const dataPoints = [];
-        const backgroundColor = [];
-        const borderColor = [];
-
-        const dataSort = merged.sort((b,a) => {
-          return a.dataPoints - b.dataPoints
-        })
-
-        for(let i = 0; i < dataSort.length; i++) {
-          label.push(dataSort[i].labels);
-          dataPoints.push(dataSort[i].dataPoints);
-          backgroundColor.push(dataSort[i].backgroundColor);
-          borderColor.push(dataSort[i].borderColor);
-        }
-        myChart.config.data.labels = label;
-        myChart.config.data.datasets[0].data = dataPoints;
-        myChart.config.data.datasets[0].backgroundColor = backgroundColor;
-        myChart.config.data.datasets[0].borderColor = borderColor;
-
-        if (dataPoints[label.indexOf('Leclerc')] < 1000) {
-          dataPoints[label.indexOf('Leclerc')] += 100;
-        }
-        if (dataPoints[label.indexOf('Sainz')] < 975) {
-          dataPoints[label.indexOf('Sainz')] += 90;
-        }
-        if (dataPoints[label.indexOf('Hamilton')] < 950) {
-          dataPoints[label.indexOf('Hamilton')] += 88;
-        }
-        if (dataPoints[label.indexOf('Russell')] < 925) {
-          dataPoints[label.indexOf('Russell')] += 85;
-        }
-        if (dataPoints[label.indexOf('Magnussen')] < 900) {
-          dataPoints[label.indexOf('Magnussen')] += 70;
-        }
-        if (dataPoints[label.indexOf('Bottas')] < 875) {
-          dataPoints[label.indexOf('Bottas')] += 70;
-        }
-        if (dataPoints[label.indexOf('Ocon')] < 850) {
-          dataPoints[label.indexOf('Ocon')] += 70;
-        }
-        if (dataPoints[label.indexOf('Tsunoda')] < 825) {
-          dataPoints[label.indexOf('Tsunoda')] += 69;
-        }
-        if (dataPoints[label.indexOf('Alonso')] < 800) {
-          dataPoints[label.indexOf('Alonso')] += 69;
-        }
-        if (dataPoints[label.indexOf('Zhou')] < 775) {
-          dataPoints[label.indexOf('Zhou')] += 69;
-        }
-        if (dataPoints[label.indexOf('Schumacher')] < 750) {
-          dataPoints[label.indexOf('Schumacher')] += 65;
-        }
-        if (dataPoints[label.indexOf('Stroll')] < 725) {
-          dataPoints[label.indexOf('Stroll')] += 65;
-        }
-        if (dataPoints[label.indexOf('Albon')] < 700) {
-          dataPoints[label.indexOf('Albon')] += 65;
-        }
-        if (dataPoints[label.indexOf('Ricciardo')] < 675) {
-          dataPoints[label.indexOf('Ricciardo')] += 60;
-        }
-        if (dataPoints[label.indexOf('Norris')] < 650) {
-          dataPoints[label.indexOf('Norris')] += 60;
-        }
-        if (dataPoints[label.indexOf('Latifi')] < 625) {
-          dataPoints[label.indexOf('Latifi')] += 60;
-        }
-        if (dataPoints[label.indexOf('Hulkenberg')] < 600) {
-          dataPoints[label.indexOf('Hulkenberg')] += 60;
-        }
-
-        myChart.update();
-      }, 2500)
-    </script> -->
-
+    
   </body>
 </html>
+
+  <!-- <script>
+    const labels = ['Leclerc', 'Verstappen', 'Sainz', 'Hamilton', 'Magnussen', 'Perez', 'Russell', 'Gasly', 'Alonso', 'Ocon', 'Albon', 'Tsuonoda', 'Schumacher', 'Bottas', 'Hulkenberg', 'Norris', 'Stroll', 'Latifi', 'Zhou', 'Ricciardo'];
+    const ctx = document.getElementById('myChart').getContext('2d');
+    const myChart = new Chart(ctx, {
+      type: 'bar',
+      data: {
+        labels: labels,
+        datasets: [{
+          label: '# of Points',
+          data: [0,0,0,0,0,0,0,0,0,0,200,0,0,0,0,0,0,200,150,175],
+          backgroundColor: [
+            'rgb(237,28,36)',
+            'rgb(30,91,198)',
+            'rgb(237,28,36)',
+            'rgb(108,211,191)',
+            'rgba(75, 192, 192, 0.2)',
+            'rgb(30,91,198)',
+            'rgb(108,211,191)'
+          ],
+          borderColor: [
+            'rgba(255, 99, 132, 1)',
+            'rgba(54, 162, 235, 1)',
+            'rgba(255, 206, 86, 1)',
+            'rgba(75, 192, 192, 1)',
+            'rgba(153, 102, 255, 1)',
+            'rgba(255, 159, 64, 1)'
+          ],
+          borderWidth: 1
+        }]
+      },
+      options: {
+        indexAxis: 'y',
+        scales: {
+          x: {
+            beginAtZero: true
+          }
+        }
+      }
+    });
+
+    setInterval(function update () {
+      let merged = myChart.config.data.labels.map((label, i) => {
+        return {
+          'labels': myChart.config.data.labels[i],
+          'dataPoints': myChart.config.data.datasets[0].data[i],
+          'backgroundColor': myChart.config.data.datasets[0].backgroundColor[i],
+          'borderColor': myChart.config.data.datasets[0].borderColor[i]
+        }
+      })
+      const label = [];
+      const dataPoints = [];
+      const backgroundColor = [];
+      const borderColor = [];
+
+      const dataSort = merged.sort((b,a) => {
+        return a.dataPoints - b.dataPoints
+      })
+
+      for(let i = 0; i < dataSort.length; i++) {
+        label.push(dataSort[i].labels);
+        dataPoints.push(dataSort[i].dataPoints);
+        backgroundColor.push(dataSort[i].backgroundColor);
+        borderColor.push(dataSort[i].borderColor);
+      }
+      myChart.config.data.labels = label;
+      myChart.config.data.datasets[0].data = dataPoints;
+      myChart.config.data.datasets[0].backgroundColor = backgroundColor;
+      myChart.config.data.datasets[0].borderColor = borderColor;
+
+      if (dataPoints[label.indexOf('Leclerc')] < 1000) {
+        dataPoints[label.indexOf('Leclerc')] += 100;
+      }
+      if (dataPoints[label.indexOf('Sainz')] < 975) {
+        dataPoints[label.indexOf('Sainz')] += 90;
+      }
+      if (dataPoints[label.indexOf('Hamilton')] < 950) {
+        dataPoints[label.indexOf('Hamilton')] += 88;
+      }
+      if (dataPoints[label.indexOf('Russell')] < 925) {
+        dataPoints[label.indexOf('Russell')] += 85;
+      }
+      if (dataPoints[label.indexOf('Magnussen')] < 900) {
+        dataPoints[label.indexOf('Magnussen')] += 70;
+      }
+      if (dataPoints[label.indexOf('Bottas')] < 875) {
+        dataPoints[label.indexOf('Bottas')] += 70;
+      }
+      if (dataPoints[label.indexOf('Ocon')] < 850) {
+        dataPoints[label.indexOf('Ocon')] += 70;
+      }
+      if (dataPoints[label.indexOf('Tsunoda')] < 825) {
+        dataPoints[label.indexOf('Tsunoda')] += 69;
+      }
+      if (dataPoints[label.indexOf('Alonso')] < 800) {
+        dataPoints[label.indexOf('Alonso')] += 69;
+      }
+      if (dataPoints[label.indexOf('Zhou')] < 775) {
+        dataPoints[label.indexOf('Zhou')] += 69;
+      }
+      if (dataPoints[label.indexOf('Schumacher')] < 750) {
+        dataPoints[label.indexOf('Schumacher')] += 65;
+      }
+      if (dataPoints[label.indexOf('Stroll')] < 725) {
+        dataPoints[label.indexOf('Stroll')] += 65;
+      }
+      if (dataPoints[label.indexOf('Albon')] < 700) {
+        dataPoints[label.indexOf('Albon')] += 65;
+      }
+      if (dataPoints[label.indexOf('Ricciardo')] < 675) {
+        dataPoints[label.indexOf('Ricciardo')] += 60;
+      }
+      if (dataPoints[label.indexOf('Norris')] < 650) {
+        dataPoints[label.indexOf('Norris')] += 60;
+      }
+      if (dataPoints[label.indexOf('Latifi')] < 625) {
+        dataPoints[label.indexOf('Latifi')] += 60;
+      }
+      if (dataPoints[label.indexOf('Hulkenberg')] < 600) {
+        dataPoints[label.indexOf('Hulkenberg')] += 60;
+      }
+
+      myChart.update();
+    }, 2500)
+  </script> -->
