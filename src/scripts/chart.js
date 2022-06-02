@@ -53,6 +53,7 @@ export const config = {
       title: {
         display: true,
         text: '',
+        font: { size: 16 },
       },
       legend: {
         display: true,
@@ -70,10 +71,35 @@ export const config = {
   },
 };
 
+const raceNames = [
+  'Bahrain Grand Prix',
+  'Emilia Romagna Grand Prix',
+  'Portuguese Grand Prix',
+  'Spanish Grand Prix',
+  'Monaco Grand Prix',
+  'Azerbaijan Grand Prix',
+  'French Grand Prix',
+  'Styrian Grand Prix',
+  'Austrian Grand Prix',
+  'British Grand Prix',
+  'Hungarian Grand Prix',
+  'Belgian Grand Prix',
+  'Dutch Grand Prix',
+  'Italian Grand Prix',
+  'Russian Grand Prix',
+  'Turkish Grand Prix',
+  'United States Grand Prix',
+  'Mexico City Grand Prix',
+  'São Paulo Grand Prix',
+  'Qatar Grand Prix',
+  'Saudi Arabian Grand Prix',
+  'Abu Dhabi Grand Prix',
+];
+
 export function setAnimate(chart, limit) {
   let i = 0;
   let ref = setInterval(() => {
-    chart.options.plugins.title.text = `Round ${i + 1}`;
+    chart.options.plugins.title.text = `Round ${i + 1}: ${raceNames[i]}`;
     for (let j = 0; j < drivers.length; j++) {
       let data = update(chart);
       increment(data, chart, i, j);
