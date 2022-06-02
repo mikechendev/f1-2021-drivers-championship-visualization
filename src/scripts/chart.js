@@ -67,6 +67,11 @@ export const config = {
       x: {
         beginAtZero: true,
       },
+      y: {
+        ticks: {
+          color: ['black'],
+        },
+      },
     },
   },
 };
