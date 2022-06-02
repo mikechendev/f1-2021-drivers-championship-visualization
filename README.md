@@ -4,7 +4,9 @@ Data visualization of the 2021 Formula 1 season
 # Background
 
 A Javascript application to visualize the 2021 Formula 1 season using data provided by Erghast Developer API.
-Users will be able to view an animated recreation of this season's races on a chart.
+Users can see a visualization of the F1 driver's championship in the form of a racing bar chart made using ChartJS.
+The chart automatically sorts after every interval, providing an accurate representation of the standings after
+each Grand Prix.
 
 # Functionality & MVPs
 
@@ -17,7 +19,7 @@ Users will be able to view an animated recreation of this season's races on a ch
 - Add support for historical race data.
 
 # Wire Frames
-- to be added
+![Alt text] (assets/f12021data.png "Screen Shot")
 
 # Technologies, Libraries, APIs
 
