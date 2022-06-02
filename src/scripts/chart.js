@@ -49,6 +49,18 @@ export const config = {
   type: 'bar',
   data: raceData,
   options: {
+    plugins: {
+      title: {
+        display: true,
+        text: '',
+      },
+      legend: {
+        display: true,
+        labels: {
+          color: 'rgb(0,0,0)',
+        },
+      },
+    },
     indexAxis: 'y',
     scales: {
       x: {
@@ -58,64 +70,59 @@ export const config = {
   },
 };
 
-export function setAnimate(chart) {
-  setInterval(function update() {
-    let merged = chart.config.data.labels.map((label, i) => {
-      return {
-        labels: chart.config.data.labels[i],
-        dataPoints: chart.config.data.datasets[0].data[i],
-        backgroundColor: chart.config.data.datasets[0].backgroundColor[i],
-        // borderColor: chart.config.data.datasets[0].borderColor[i],
-      };
-    });
-    const label = [];
-    const dataPoints = [];
-    const backgroundColor = [];
-    // const borderColor = [];
-
-    const dataSort = merged.sort((b, a) => {
-      return a.dataPoints - b.dataPoints;
-    });
-
-    for (let i = 0; i < dataSort.length; i++) {
-      label.push(dataSort[i].labels);
-      dataPoints.push(dataSort[i].dataPoints);
-      backgroundColor.push(dataSort[i].backgroundColor);
-      // borderColor.push(dataSort[i].borderColor);
+export function setAnimate(chart, limit) {
+  let i = 0;
+  let ref = setInterval(() => {
+    chart.options.plugins.title.text = `Round ${i + 1}`;
+    for (let j = 0; j < drivers.length; j++) {
+      let data = update(chart);
+      increment(data, chart, i, j);
     }
-    chart.config.data.labels = label;
-    chart.config.data.datasets[0].data = dataPoints;
-    chart.config.data.datasets[0].backgroundColor = backgroundColor;
-    // chart.config.data.datasets[0].borderColor = borderColor;
-
-    //Put update logic here
-
-    for (let n = 0; n < 23; n++) {
-      for (let j = 0; j < drivers.length; j++) {
-        if (
-          dataPoints[label.indexOf(`${drivers[j].name}`)] <
-          `${drivers[j].points[drivers[j].points.length - 1]}`
-        ) {
-          dataPoints[label.indexOf(`${drivers[j].name}`)] +=
-            n === 0
-              ? drivers[j].points[n]
-              : drivers[j].points[n] - drivers[j].points[n - 1];
-          // debugger;
-        }
-      }
-    }
-    chart.update();
+    ++i;
+    if (i == limit) clearInterval(ref);
   }, 2000);
 }
 
-// drivers.forEach((driver) => {
-//   let i = 0;
-//   if (
-//     dataPoints[label.indexOf(`${driver.name}`)] <
-//     `${driver.points[driver.points.length - 1]}`
-//   ) {
-//     dataPoints[label.indexOf(`${driver.name}`)] +=
-//       i === 0 ? driver.points[i] : driver.points[i] - driver.points[i - 1];
-//     i++;
-//   }
-// });
+function update(chart) {
+  let merged = chart.config.data.labels.map((label, i) => {
+    return {
+      labels: chart.config.data.labels[i],
+      dataPoints: chart.config.data.datasets[0].data[i],
+      backgroundColor: chart.config.data.datasets[0].backgroundColor[i],
+    };
+  });
+  const label = [];
+  const dataPoints = [];
+  const backgroundColor = [];
+
+  const dataSort = merged.sort((b, a) => {
+    return a.dataPoints - b.dataPoints;
+  });
+
+  for (let i = 0; i < dataSort.length; i++) {
+    label.push(dataSort[i].labels);
+    dataPoints.push(dataSort[i].dataPoints);
+    backgroundColor.push(dataSort[i].backgroundColor);
+  }
+  chart.config.data.labels = label;
+  chart.config.data.datasets[0].data = dataPoints;
+  chart.config.data.datasets[0].backgroundColor = backgroundColor;
+
+  return [label, dataPoints, backgroundColor];
+}
+
+const increment = (data, chart, n, j) => {
+  let label = data[0];
+  let dataPoints = data[1];
+  let backgroundColor = data[2];
+  if (
+    dataPoints[label.indexOf(`${drivers[j].name}`)] <
+    `${drivers[j].points[drivers[j].points.length - 1]}`
+  ) {
+    dataPoints[label.indexOf(`${drivers[j].name}`)] +=
+      n === 0
+        ? drivers[j].points[n]
+        : drivers[j].points[n] - drivers[j].points[n - 1];
+  }
+  chart.update();
+};
