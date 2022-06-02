@@ -5,14 +5,23 @@
   font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
   color: white;
   background-color: red;
+  white-space: none;
 }
 
-#top-nav > img {
-  display: block;
-  position: relative;
-  left: -60%;
+.logo > img {
   min-width: 100px;
   min-height: auto;
+  position: relative;
+  left: -400px;
+}
+
+.logo {
+  display: inline-block;
+  position: relative;
+}
+
+.title {
+  display: inline-block;
 }
 
 .bottom-nav {
