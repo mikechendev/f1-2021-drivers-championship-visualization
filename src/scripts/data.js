@@ -19,6 +19,13 @@ export async function fetchAllRaces() {
   return results;
 }
 
+export const fetchResults = async (round) => {
+  const url = `https://ergast.com/api/f1/2021/${round}/results.json`;
+  const response = await fetch(url);
+  const data = await response.json();
+  console.log('data', data);
+};
+
 const races = await fetchAllRaces();
 
 export const createDrivers = () => {

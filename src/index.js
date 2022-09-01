@@ -1,4 +1,5 @@
 import { config, setAnimate } from './scripts/chart.js';
+import { fetchResults } from './scripts/data.js';
 
 // document.addEventListener('DOMContentLoaded', () => {
 // });
@@ -6,6 +7,7 @@ import { config, setAnimate } from './scripts/chart.js';
 const ctx = document.getElementById('myChart').getContext('2d');
 let myChart = new Chart(ctx, config);
 let races = 22;
+console.log(fetchResults(1));
 setAnimate(myChart, races);
 
 // const restartButton = document.querySelector('#restart');

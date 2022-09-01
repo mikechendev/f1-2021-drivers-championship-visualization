@@ -2,8 +2,6 @@ import { createDrivers } from './data';
 
 const drivers = createDrivers();
 
-console.log(drivers);
-
 const labels = () => {
   let result = [];
   drivers.forEach((driver) => {
