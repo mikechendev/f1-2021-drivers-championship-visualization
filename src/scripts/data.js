@@ -80,4 +80,5 @@ export const createRaces = () => {
   return races;
 };
 
+console.log(results);
 console.log(createRaces());

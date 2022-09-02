@@ -4,7 +4,8 @@ export default class Race {
     this.raceName = result.raceName;
     this.circuit = result.Circuit.circuitName;
     this.circuitUrl = result.Circuit.url;
-    this.country = result.Circuit.country;
+    this.locality = result.Circuit.Location.locality;
+    this.country = result.Circuit.Location.country;
     this.date = result.date;
     this.results = result.Results;
   }
