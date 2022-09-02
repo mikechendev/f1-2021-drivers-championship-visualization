@@ -1,5 +1,6 @@
 import { config, setAnimate } from './scripts/chart.js';
 import { createRaces } from './scripts/data.js';
+import { createTable } from './scripts/table.js';
 
 // document.addEventListener('DOMContentLoaded', () => {
 
@@ -14,6 +15,7 @@ const clearDiv = () => {
 };
 
 const chart = () => {
+  clearDiv();
   let canvas = document.createElement('canvas');
   canvas.setAttribute('id', 'myChart');
   chartContainer.append(canvas);
@@ -23,13 +25,6 @@ const chart = () => {
   setAnimate(myChart, races);
 };
 
-let div = document.createElement('div');
-div.innerText = 'test';
-
-chart();
-clearDiv();
-chartContainer.append(div);
-clearDiv();
 chart();
 
 const dropdown = document.querySelector('.dropdown');
@@ -64,6 +59,11 @@ options.forEach((option) => {
       option.classList.remove('active');
     });
     option.classList.add('active');
+    if (option.value === 0) {
+      chart();
+    } else {
+      createTable(option.value);
+    }
   });
 });
 

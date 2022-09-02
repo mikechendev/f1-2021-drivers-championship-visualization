@@ -73,7 +73,6 @@ export const createRaces = () => {
   let races = [];
   for (let i = 0; i < results.length; i++) {
     let result = results[i][0];
-    console.log(result);
     let newResult = new Race(result);
     races.push(newResult);
   }
