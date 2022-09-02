@@ -1,4 +1,5 @@
 import Driver from './driver';
+import Race from './race';
 
 export async function fetchData(round) {
   const url = `https://ergast.com/api/f1/2021/${round}/driverstandings.json`;
@@ -39,7 +40,7 @@ export const fetchAllResults = async () => {
 };
 
 const races = await fetchAllRaces();
-const results = await fetchAllResults();
+export const results = await fetchAllResults();
 
 export const createDrivers = () => {
   let drivers = [];
@@ -67,3 +68,16 @@ export const createDrivers = () => {
   }
   return drivers;
 };
+
+export const createRaces = () => {
+  let races = [];
+  for (let i = 0; i < results.length; i++) {
+    let result = results[i][0];
+    console.log(result);
+    let newResult = new Race(result);
+    races.push(newResult);
+  }
+  return races;
+};
+
+console.log(createRaces());

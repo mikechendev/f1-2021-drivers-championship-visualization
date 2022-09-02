@@ -6,5 +6,6 @@ export default class Race {
     this.circuitUrl = result.Circuit.url;
     this.country = result.Circuit.country;
     this.date = result.date;
+    this.results = result.Results;
   }
 }
