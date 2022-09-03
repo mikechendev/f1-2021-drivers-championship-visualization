@@ -25,11 +25,11 @@ export const createTable = (value) => {
   // table headers
 
   let posTh = document.createElement('th');
-  posTh.innerText = 'position';
+  posTh.innerText = 'pos';
   let gridTh = document.createElement('th');
   gridTh.innerText = 'grid';
   let numTh = document.createElement('th');
-  numTh.innerText = 'number';
+  numTh.innerText = 'num';
   let driverTh = document.createElement('th');
   driverTh.innerText = 'driver';
   let teamTh = document.createElement('th');
