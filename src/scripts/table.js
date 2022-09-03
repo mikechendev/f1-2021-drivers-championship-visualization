@@ -10,6 +10,7 @@ export const createTable = (value) => {
   const races = createRaces();
   const race = races.find((race) => value == race.round);
 
+  let div = document.createElement('div');
   let tableContainer = document.createElement('div');
   let titleDiv = document.createElement('div');
   let dateDiv = document.createElement('div');
@@ -18,29 +19,60 @@ export const createTable = (value) => {
   let circuitDiv = document.createElement('div');
 
   let table = document.createElement('table');
-  let th = document.createElement('th');
-  let td = document.createElement('td');
+  let thead = document.createElement('thead');
+  let headTr = document.createElement('tr');
+
+  // table headers
+
+  let posTh = document.createElement('th');
+  posTh.innerText = 'position';
+  let gridTh = document.createElement('th');
+  gridTh.innerText = 'grid';
+  let numTh = document.createElement('th');
+  numTh.innerText = 'number';
+  let driverTh = document.createElement('th');
+  driverTh.innerText = 'driver';
+  let teamTh = document.createElement('th');
+  teamTh.innerText = 'constructor';
+  let lapsTh = document.createElement('th');
+  lapsTh.innerText = 'laps';
+  let timeTh = document.createElement('th');
+  timeTh.innerText = 'time';
+  let pointsTh = document.createElement('th');
+  pointsTh.innerText = 'points';
 
   tableContainer.classList.add('table-container');
 
   titleDiv.classList.add('title-div');
   titleDiv.innerText = race.raceName;
-  tableContainer.append(titleDiv);
 
   circuitDiv.classList.add('circuit-div');
   circuitDiv.innerText = race.circuit;
   circuitLink.href = race.circuitUrl;
   circuitLink.append(circuitDiv);
-  tableContainer.append(circuitLink);
 
   dateDiv.classList.add('info-div');
   dateDiv.innerText = race.date;
-  tableContainer.append(dateDiv);
 
   locationDiv.classList.add('location-div');
   locationDiv.innerText = `${race.locality}, ${race.country}`;
-  tableContainer.append(locationDiv);
+
+  headTr.append(
+    posTh,
+    gridTh,
+    numTh,
+    driverTh,
+    teamTh,
+    lapsTh,
+    timeTh,
+    pointsTh
+  );
+  thead.append(headTr);
+  table.append(thead);
 
   clearDiv();
+  tableContainer.append(titleDiv, circuitLink, dateDiv, locationDiv, table);
   chartContainer.append(tableContainer);
+
+  console.log(race);
 };
