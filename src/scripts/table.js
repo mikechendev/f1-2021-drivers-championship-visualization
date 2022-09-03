@@ -48,6 +48,9 @@ export const createTable = (value) => {
     tbody.append(document.createElement('tr'));
   }
 
+  let trs = tbody.querySelectorAll('tr');
+  console.log(trs);
+
   tableContainer.classList.add('table-container');
 
   titleDiv.classList.add('title-div');
