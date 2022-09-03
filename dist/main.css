@@ -151,7 +151,7 @@ menu li:hover {
 }
 
 .table-container {
-  padding-top: 2em;
+  padding-top: 1em;
   display: flex;
   justify-content: center;
   flex-direction: column;
@@ -166,13 +166,22 @@ menu li:hover {
 }
 
 .location-div {
-  padding-bottom: 3em;
+  padding-bottom: 1em;
 }
 
 table,
 td,
 th {
   border: 1px solid black;
+}
+
+th {
+  background: red;
+  color: white;
+}
+
+td {
+  background: #D3D3D3;
 }
 
 table {
