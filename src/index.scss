@@ -28,6 +28,7 @@
   display: flex;
   justify-content: center;
   align-items: center;
+  padding-top: 3em;
 }
 
 img {
@@ -165,9 +166,20 @@ menu li:hover {
   padding-bottom: 1em;
 }
 
+.location-div {
+  padding-bottom: 1em;
+}
+
+table,
+td,
+th {
+  border: 1px solid black;
+}
+
 table {
   padding-top: 3em;
   padding-bottom: 3em;
-  min-width: 100%
+  min-width: 100%;
+  border-collapse: collapse;
 }
 
