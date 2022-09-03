@@ -21,6 +21,7 @@ export const createTable = (value) => {
   let table = document.createElement('table');
   let thead = document.createElement('thead');
   let headTr = document.createElement('tr');
+  let tbody = document.createElement('tbody');
 
   // table headers
 
@@ -40,6 +41,12 @@ export const createTable = (value) => {
   timeTh.innerText = 'time';
   let pointsTh = document.createElement('th');
   pointsTh.innerText = 'points';
+
+  // loop for table data
+
+  for (let i = 0; i < race.results.length; i++) {
+    tbody.append(document.createElement('tr'));
+  }
 
   tableContainer.classList.add('table-container');
 
@@ -69,6 +76,7 @@ export const createTable = (value) => {
   );
   thead.append(headTr);
   table.append(thead);
+  table.append(tbody);
 
   clearDiv();
   tableContainer.append(titleDiv, circuitLink, dateDiv, locationDiv, table);
