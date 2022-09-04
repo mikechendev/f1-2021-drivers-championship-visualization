@@ -9,23 +9,23 @@ import { createTable } from './scripts/table.js';
 let chartContainer = document.querySelector('.chart-container');
 
 const clearDiv = () => {
+  console.log(chartContainer.firstChild);
   while (chartContainer.firstChild) {
-    chartContainer.removeChild(chartContainer.firstChild);
+    // chartContainer.removeChild(chartContainer.firstChild);
+    chartContainer.firstChild.remove();
   }
 };
 
 const chart = () => {
   clearDiv();
+  console.log(chartContainer.firstChild);
   let canvas = document.createElement('canvas');
   canvas.setAttribute('id', 'myChart');
   chartContainer.append(canvas);
   let ctx = document.getElementById('myChart').getContext('2d');
   let myChart = new Chart(ctx, config);
-  let races = 22;
-  setAnimate(myChart, races);
+  setAnimate(myChart);
 };
-
-chart();
 
 const dropdown = document.querySelector('.dropdown');
 const menu = dropdown.querySelector('.menu');
@@ -66,6 +66,8 @@ options.forEach((option) => {
     }
   });
 });
+
+chart();
 
 // const restartButton = document.querySelector('#restart');
 // // debugger;

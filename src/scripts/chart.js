@@ -99,7 +99,7 @@ const raceNames = [
   'Abu Dhabi Grand Prix',
 ];
 
-export function setAnimate(chart, limit) {
+export function setAnimate(chart) {
   let i = 0;
   let ref = setInterval(() => {
     chart.options.plugins.title.text = `Round ${i + 1}: ${raceNames[i]}`;
@@ -108,7 +108,7 @@ export function setAnimate(chart, limit) {
       increment(data, chart, i, j);
     }
     ++i;
-    if (i == limit) clearInterval(ref);
+    if (i === 22) clearInterval(ref);
   }, 2000);
 }
 

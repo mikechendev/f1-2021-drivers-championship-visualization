@@ -3,8 +3,10 @@ import { createRaces } from './data';
 export const createTable = (value) => {
   const chartContainer = document.querySelector('.chart-container');
   const clearDiv = () => {
+    console.log(chartContainer.firstChild);
     while (chartContainer.firstChild) {
-      chartContainer.removeChild(chartContainer.firstChild);
+      // chartContainer.removeChild(chartContainer.firstChild);
+      chartContainer.firstChild.remove();
     }
   };
   const races = createRaces();
@@ -112,6 +114,7 @@ export const createTable = (value) => {
   table.append(tbody);
 
   clearDiv();
+  console.log(chartContainer.firstChild);
   tableContainer.append(circuitLink, dateDiv, locationDiv, table);
   chartContainer.append(tableContainer);
 
