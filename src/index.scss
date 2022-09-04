@@ -85,7 +85,7 @@ body {
   border-radius: 0.5em;
   padding: 1em;
   cursor: pointer;
-  transition: background 0.3s
+  transition: background 0.3s;
 }
 
 .select-clicked {
@@ -128,7 +128,11 @@ body {
   transition: 0.2s;
   z-index: 1;
   max-height: 400px;
-  overflow: scroll;
+  overflow-y: scroll;
+}
+
+.menu::-webkit-scrollbar {
+  display: none;
 }
 
 .menu li {

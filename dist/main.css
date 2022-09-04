@@ -127,7 +127,11 @@ body {
   transition: 0.2s;
   z-index: 1;
   max-height: 400px;
-  overflow: scroll;
+  overflow-y: scroll;
+}
+
+.menu::-webkit-scrollbar {
+  display: none;
 }
 
 .menu li {

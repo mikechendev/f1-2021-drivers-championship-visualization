@@ -114,9 +114,6 @@ export const createTable = (value) => {
   table.append(tbody);
 
   clearDiv();
-  console.log(chartContainer.firstChild);
   tableContainer.append(circuitLink, dateDiv, locationDiv, table);
   chartContainer.append(tableContainer);
-
-  console.log(race);
 };
