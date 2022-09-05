@@ -9,7 +9,6 @@ import { createTable } from './scripts/table.js';
 let chartContainer = document.querySelector('.chart-container');
 
 const clearDiv = () => {
-  console.log(chartContainer.firstChild);
   while (chartContainer.firstChild) {
     // chartContainer.removeChild(chartContainer.firstChild);
     chartContainer.firstChild.remove();
@@ -18,7 +17,6 @@ const clearDiv = () => {
 
 const chart = () => {
   clearDiv();
-  console.log(chartContainer.firstChild);
   let canvas = document.createElement('canvas');
   canvas.setAttribute('id', 'myChart');
   chartContainer.append(canvas);
