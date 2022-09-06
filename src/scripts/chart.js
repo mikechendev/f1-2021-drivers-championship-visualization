@@ -120,25 +120,26 @@ const raceNames = [
 //   }
 // };
 
+let refId;
+
 export function setAnimate(chart) {
+  if (refId !== undefined) clearInterval(refId);
   let i = 0;
   let newData = chart.config.data.datasets[0].data.map((pts) => (pts = 0));
   chart.config.data.datasets[0].data = newData;
   let ref = setInterval(() => {
+    console.log(ref);
     chart.options.plugins.title.text = `Round ${i + 1}: ${raceNames[i]}`;
-    console.log();
     for (let j = 0; j < drivers.length; j++) {
       let data = update(chart);
-      // console.log(data)
-
       increment(data, chart, i, j);
-      // console.log(i);
     }
     ++i;
-    if (i === 22) {
+    if (i === 22 || i === 0) {
       clearInterval(ref);
     }
   }, 2000);
+  refId = ref;
 }
 
 function update(chart) {
