@@ -1,4 +1,9 @@
-import { config, setAnimate } from './scripts/chart.js';
+import {
+  config,
+  setAnimate,
+  intervalManager,
+  animate,
+} from './scripts/chart.js';
 import { createRaces } from './scripts/data.js';
 import { createTable } from './scripts/table.js';
 
@@ -22,6 +27,7 @@ const chart = () => {
   chartContainer.append(canvas);
   let ctx = document.getElementById('myChart').getContext('2d');
   let myChart = new Chart(ctx, config);
+  // console.log(myChart);
   setAnimate(myChart);
 };
 
@@ -66,6 +72,7 @@ options.forEach((option) => {
 });
 
 chart();
+// console.log(document.getElementById('myChart'));
 
 // const restartButton = document.querySelector('#restart');
 // // debugger;

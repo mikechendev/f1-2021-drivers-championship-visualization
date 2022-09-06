@@ -3,7 +3,6 @@ import { createRaces } from './data';
 export const createTable = (value) => {
   const chartContainer = document.querySelector('.chart-container');
   const clearDiv = () => {
-    console.log(chartContainer.firstChild);
     while (chartContainer.firstChild) {
       // chartContainer.removeChild(chartContainer.firstChild);
       chartContainer.firstChild.remove();

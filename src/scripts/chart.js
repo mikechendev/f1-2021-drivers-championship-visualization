@@ -99,16 +99,45 @@ const raceNames = [
   'Abu Dhabi Grand Prix',
 ];
 
+// let ref;
+// let activeChart = document.querySelector('myChart');
+
+// export const animate = () => {
+//   myChart.options.plugins.title.text = `Round ${i + 1}: ${raceNames[i]}`;
+//   for (let j = 0; j < drivers.length; j++) {
+//     let data = update(chart);
+//     increment(data, chart, i, j);
+//     ++i;
+//     if (i === 22) clearInterval(ref);
+//   }
+// };
+
+// export const intervalManager = (activeChart) => {
+//   if (activeChart) {
+//     ref = setInterval(animate, 2000);
+//   } else {
+//     clearInterval(ref);
+//   }
+// };
+
 export function setAnimate(chart) {
   let i = 0;
+  let newData = chart.config.data.datasets[0].data.map((pts) => (pts = 0));
+  chart.config.data.datasets[0].data = newData;
   let ref = setInterval(() => {
     chart.options.plugins.title.text = `Round ${i + 1}: ${raceNames[i]}`;
+    console.log();
     for (let j = 0; j < drivers.length; j++) {
       let data = update(chart);
+      // console.log(data)
+
       increment(data, chart, i, j);
+      // console.log(i);
     }
     ++i;
-    if (i === 22) clearInterval(ref);
+    if (i === 22) {
+      clearInterval(ref);
+    }
   }, 2000);
 }
 
@@ -142,8 +171,12 @@ function update(chart) {
 
 const increment = (data, chart, n, j) => {
   let label = data[0];
+  // console.log(label);
   let dataPoints = data[1];
+  // console.log(dataPoints);
   let backgroundColor = data[2];
+  // console.log(dataPoints[label.indexOf(`${drivers[0].name}`)]);
+  // console.log(`${drivers[0].points[drivers[0].points.length - 1]}`);
   if (
     dataPoints[label.indexOf(`${drivers[j].name}`)] <
     `${drivers[j].points[drivers[j].points.length - 1]}`
